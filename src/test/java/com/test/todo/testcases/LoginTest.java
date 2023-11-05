@@ -11,8 +11,10 @@ import org.testng.annotations.Test;
 
 @Feature("auth feature")
 public class LoginTest extends BaseTest {
-    @Story("Login with email and password")
+
+    @Story("Login with valid credential")
     @Description("it will login by filling email and password and navigate to Todo page")
+    
     @Test(description = "Test login Functionality using email and password")
     public void shouldBeAbleToLoginWithEmailAndPassword() {
         LoginPage loginPage = new LoginPage(getDriver());
