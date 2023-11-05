@@ -7,8 +7,6 @@ import io.qameta.allure.Step;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class NewTodoPage extends BasePage {
     private final By newToDo = By.cssSelector("[data-testid=\"new-todo\"]");
@@ -27,7 +25,7 @@ public class NewTodoPage extends BasePage {
     @Step
     public TodoPage addNewTask(String todoName) {
         driver.findElement(newToDo).sendKeys(todoName);
-          driver.findElement(submitNewToDo).click();
+        driver.findElement(submitNewToDo).click();
         return new TodoPage(driver);
     }
 

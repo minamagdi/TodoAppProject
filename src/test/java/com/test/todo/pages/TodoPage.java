@@ -4,52 +4,45 @@ import com.test.todo.base.BasePage;
 import com.test.todo.config.EndPoint;
 import com.test.todo.utilies.ConfigUtils;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class TodoPage extends BasePage {
     public TodoPage(WebDriver driver) {
         super(driver);
     }
-
-    @FindBy(css = "[data-testid=\"welcome\"]")
-    private WebElement welcomeMessage;
-    @FindBy(css = "[data-testid=\"add\"]")
-    private WebElement addNewTodo;
-    @FindBy(css = "[data-testid=\"todo-item\"]")
-    private WebElement todoItem;
-    @FindBy(css = "[data-testid=\"delete\"]")
-    private WebElement deleteButton;
-    @FindBy(css = "[data-testid=\"no-todos\"]")
-    private WebElement noTodoAvailable;
+    private final By welcomeMessage = By.cssSelector("[data-testid=\"welcome\"]");
+    private final By addNewTodo = By.cssSelector("[data-testid=\"add\"]");
+    private final By todoItem = By.cssSelector("[data-testid=\"todo-item\"]");
+    private final By deleteButton = By.cssSelector("[data-testid=\"delete\"]");
+    private final By noTodoAvailable = By.cssSelector("[data-testid=\"no-todos\"]");
 
 
     @Step
     public boolean isWelcomeMessageDisplayed() {
-        return welcomeMessage.isDisplayed();
+        return driver.findElement(welcomeMessage).isDisplayed();
     }
 
     @Step
     public NewTodoPage clickOnPlusButton() {
-        addNewTodo.click();
+        driver.findElement(addNewTodo).click();
         return new NewTodoPage(driver);
     }
 
     @Step
     public String getTodoText() {
-        return todoItem.getText();
+        return driver.findElement(todoItem).getText();
     }
 
     @Step
     public TodoPage clickOnDeleteButton() {
-        deleteButton.click();
+        driver.findElement(deleteButton).click();
         return this;
     }
 
     @Step
     public String getNoTodoAvailable() {
-        return noTodoAvailable.getText();
+        return driver.findElement(noTodoAvailable).getText();
     }
 
     @Step
